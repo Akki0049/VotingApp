@@ -4,29 +4,29 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1>Products - For CI/CD - last run</h1>
+<h1>Assembly Election Candidates</h1>
 
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Name)</th>
-            <th>@Html.DisplayNameFor(model => model.Category)</th>
-            <th>@Html.DisplayNameFor(model => model.Description)</th>
-            <th>@Html.DisplayNameFor(model => model.ImageFile)</th>
-            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.CandidateName)</th>
+            <th>@Html.DisplayNameFor(model => model.Party)</th>
+            <th>@Html.DisplayNameFor(model => model.City)</th>
+            <th>@Html.DisplayNameFor(model => model.PartyImage)</th>
+            <th>@Html.DisplayNameFor(model => model.WardNo)</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                <td>@Html.DisplayFor(modelItem => item.Category)</td>
-                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.CandidateName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Party)</td>
+                <td>@Html.DisplayFor(modelItem => item.City)</td>
                 <td>
-                    <img src="~/images/@item.ImageFile" alt="@item.Name" width="80" height="80" />
+                    <img src="~/images/@item.PartyImage" alt="@item.CandidateName" width="80" height="80" />
                 </td>
-                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>@Html.DisplayFor(modelItem => item.WardNo)</td>
             </tr>
         }
     </tbody>

@@ -8,51 +8,51 @@ namespace Voting.client.Data
     {
         new Product
         {
-            Name = "IPhone X",
-            Description = "This phone is the company’s biggest change to its flagship smartphone in years. It includes a borderless.",
-            ImageFile = "product-1.png",
-            Price = 950.00M,
-            Category = "Smart Phone"
+            CandidateName = "Sunil Tatkare",
+            Party = "Shivsena Shinde Gat",
+            PartyImage = "product-1.png",
+            WardNo = 1,
+            City = "South Mumbai"
         },
         new Product
         {
-            Name = "Samsung 10",
-            Description = "This phone is the company’s biggest change to its flagship smartphone in years. It includes a borderless.",
-            ImageFile = "product-2.png",
-            Price = 840.00M,
-            Category = "Smart Phone"
+            CandidateName = "Rajan Vichare",
+            Party = "Shivsena Thakare Gat",
+            PartyImage = "product-2.png",
+            WardNo = 147,
+            City = "Thane"
         },
         new Product
         {
-            Name = "Huawei Plus",
-            Description = "This phone is the company’s biggest change to its flagship smartphone in years. It includes a borderless.",
-            ImageFile = "product-3.png",
-            Price = 650.00M,
-            Category = "White Appliances"
+            CandidateName = "Manoj Kotak",
+            Party = "BJP",
+            PartyImage = "product-3.png",
+            WardNo = 145,
+            City = "Mulund"
         },
         new Product
         {
-            Name = "Xiaomi Mi 9",
-            Description = "This phone is the company’s biggest change to its flagship smartphone in years. It includes a borderless.",
-            ImageFile = "product-4.png",
-            Price = 470.00M,
-            Category = "White Appliances"
+            CandidateName = "Prashant Thakur",
+            Party = "BJP",
+            PartyImage = "product-4.png",
+            WardNo = 188,
+            City = "Panvel"
         },
         new Product
         {
-            Name = "HTC U11+ Plus",
-            Description = "This phone is the company’s biggest change to its flagship smartphone in years. It includes a borderless.",
-            ImageFile = "product-5.png",
-            Price = 380.00M,
-            Category = "Smart Phone"
+            CandidateName = "Ganesh Naik",
+            Party = "NCP",
+            PartyImage = "product-5.png",
+            WardNo = 151,
+            City = "Belapur"
         },
         new Product
         {
-            Name = "LG G7 ThinQ New8",
-            Description = "This phone is the company’s biggest change to its flagship smartphone in years. It includes a borderless.",
-            ImageFile = "product-6.png",
-            Price = 240.00M,
-            Category = "Home Kitchen"
+            CandidateName = "Rajesh More",
+            Party = "Shivsena",
+            PartyImage = "product-6.png",
+            WardNo = 144,
+            City = "Kalyan"
         }
     };
     }
