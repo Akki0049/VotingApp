@@ -1,1 +1,1 @@
-# VotingApp
+# ShoppingApp
