@@ -1,6 +1,6 @@
-﻿using Voting.Client.Models;
+﻿using Voting.API.Models;
 
-namespace Voting.client.Data
+namespace Voting.API.Data
 {
     public static class ProductContext
     {
