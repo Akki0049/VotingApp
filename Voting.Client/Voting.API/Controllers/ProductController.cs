@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +13,18 @@ namespace Voting.API.Controllers
 {
         [ApiController]
         [Route("[controller]")]
-        public class productController
-        {
-            private readonly ILogger<productController> _logger;
+        public class ProductController(ProductContext context, ILogger<ProductController> logger)
+    {
+            private readonly ProductContext _context = context ?? throw new ArgumentNullException(nameof(context));
+            private readonly ILogger<ProductController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-            public productController(ILogger<productController> logger) 
-            {
-                _logger = logger;
-        }
         [HttpGet]
-        public IEnumerable<Product> Get()
+        public async Task<IEnumerable<Product>> Get()
         {
-           return ProductContext.Products;
+           return await _context
+                            .Products
+                            .Find(p => true)
+                            .ToListAsync();
         }
         
     }
