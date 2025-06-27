@@ -1,0 +1,15 @@
+services:
+  voting.api:
+    image: ${DOCKER_REGISTRY-}votingapi
+    build:
+      context: .
+      dockerfile: Voting.API/Dockerfile
+
+  voting.client:
+    image: ${DOCKER_REGISTRY-}votingclient
+    build:
+      context: .
+      dockerfile: Voting.client/Dockerfile
+
+  voting.db:
+    image: mongo  

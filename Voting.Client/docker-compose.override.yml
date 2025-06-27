@@ -1,0 +1,24 @@
+services:
+  voting.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+    ports:
+      - "8080:8080"
+
+  voting.client:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    ports:
+      - "8081:8080"
+
+  voting.db: 
+    container_name: voting
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes: 
+      #- $(WEBAPP_STORAGE_HOME)/site:/data.db
+      - ${WEBAPP_STORAGE_HOME}/site:/data/db
