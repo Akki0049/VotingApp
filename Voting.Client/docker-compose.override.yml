@@ -1,24 +1,31 @@
 services:
   voting.api:
+    container_name: votingapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - "DatabaseSettings:ConnectionString=mongodb://votingdb:27017"
+    depends_on:
+      - voting.db
     ports:
-      - "8080:8080"
+      - "8000:8080"
 
   voting.client:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - VotingAPIUrl=http://votingapi:8080
       - ASPNETCORE_HTTP_PORTS=8080
+    depends_on:
+      - voting.db
+      - voting.api
     ports:
-      - "8081:8080"
+      - "8001:8080"
 
   voting.db: 
-    container_name: voting
+    container_name: votingdb
     restart: always
     ports:
       - "27017:27017"
     volumes: 
-      #- $(WEBAPP_STORAGE_HOME)/site:/data.db
+
       - ${WEBAPP_STORAGE_HOME}/site:/data/db

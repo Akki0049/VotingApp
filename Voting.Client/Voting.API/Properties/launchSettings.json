@@ -1,6 +1,14 @@
 {
   "profiles": {
-    "http": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "VotingAPI": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -8,15 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5120"
-    },
-    "Voting.API": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      "applicationUrl": "http://localhost:5000"
     },
     "Container (Dockerfile)": {
       "commandName": "Docker",
@@ -34,7 +34,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://localhost:20778",
       "sslPort": 0
     }
   }

@@ -1,8 +1,15 @@
 var builder = WebApplication.CreateBuilder(args);
+// Add VotingAPIUrl-based HttpClient
+builder.Services.AddHttpClient("VotingAPIClient", client =>
+{
+    var VotingApiUrl = builder.Configuration["VotingAPIUrl"];
+    Console.WriteLine($">>> CONFIG VotingAPIUrl = {VotingApiUrl}");
+
+    client.BaseAddress = new Uri(VotingApiUrl ?? "http://fallback.local"); // fallback optional
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

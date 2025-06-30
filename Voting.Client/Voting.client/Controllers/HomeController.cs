@@ -1,4 +1,4 @@
-    using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 using Newtonsoft.Json;
 
@@ -7,7 +7,6 @@ using Voting.client.Models;
 using Voting.Client.Models;
 
 using System.Diagnostics;
-//using Voting.client.Models;
 
 namespace Voting.client.Controllers
 
@@ -27,7 +26,7 @@ namespace Voting.client.Controllers
 
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-            _httpClient = httpClientFactory.CreateClient("ShoppingAPIClient");
+            _httpClient = httpClientFactory.CreateClient("VotingAPIClient");
 
         }
 
@@ -35,7 +34,7 @@ namespace Voting.client.Controllers
 
         {
 
-            var response = await _httpClient.GetAsync("http://localhost:5000/product");
+            var response = await _httpClient.GetAsync("/product");
 
             var content = await response.Content.ReadAsStringAsync();
 
@@ -44,6 +43,7 @@ namespace Voting.client.Controllers
             return View(productList);
 
         }
+
 
         public IActionResult Privacy()
 
