@@ -1,0 +1,21 @@
+#docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+#docker-compose -f docker-compose.yml -f docker-compose.override.yml down
+
+az --version
+az login
+az group create --name myResourceGroup --location west
+az acr create --resource-group myResourceGroup -name votingacr --sku Basic
+az acr update -n votingacr --admin-enabled true
+
+az arc login -name votingacr
+az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
+
+docker tag votingapi:latest votingacr.azurecr.io/votingapi:v1
+docker tag votingclient:latest votingacr.azurecr.io/votingclient:v1
+docker push votingacr.azurecr.io/votingapi:v1
+docker push votingacr.azurecr.io/votingclient:v1
+
+--Check Azure Repo
+az acr repository list --name votingacr --output table
+--Check Azure Repo with tag name
+az acr repository show-tags --name votingacr --repository votingclient --output table
