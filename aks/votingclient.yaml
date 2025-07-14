@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: votingclient-deployment
+  labels:
+    app: votingclient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: votingclient
+  template:
+    metadata:
+      labels:
+        app: votingclient
+    spec:
+      containers:
+        - name: votingclient
+          image: votingacr.azurecr.io/votingclient:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: votingAPIUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: votingapi-configmap
+                  key: votingapi_url
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: votingclient-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: votingclient
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

@@ -19,3 +19,6 @@ docker push votingacr.azurecr.io/votingclient:v1
 az acr repository list --name votingacr --output table
 --Check Azure Repo with tag name
 az acr repository show-tags --name votingacr --repository votingclient --output table
+
+
+kubectl create secret docker-registry acr-secret

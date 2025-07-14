@@ -1,11 +1,18 @@
 var builder = WebApplication.CreateBuilder(args);
-// Add VotingAPIUrl-based HttpClient
+
+// Add VotingAPIUrl-based HttpClient with fallback and validation
 builder.Services.AddHttpClient("VotingAPIClient", client =>
 {
     var VotingApiUrl = builder.Configuration["VotingAPIUrl"];
-    Console.WriteLine($">>> CONFIG VotingAPIUrl = {VotingApiUrl}");
+    Console.WriteLine($">>> CONFIG VotingAPIUrl = '{VotingApiUrl}'");
 
-    client.BaseAddress = new Uri(VotingApiUrl ?? "http://fallback.local"); // fallback optional
+    if (string.IsNullOrWhiteSpace(VotingApiUrl))
+    {
+        Console.WriteLine("WARNING: VotingAPIUrl config is missing or empty, using fallback URL.");
+        VotingApiUrl = "http://localhost:7211";
+    }
+
+    client.BaseAddress = new Uri(VotingApiUrl);
 });
 
 // Add services to the container.
